@@ -10,10 +10,16 @@ import Foundation
 struct TacoData: Decodable {
 	var baseLayer: BaseLayerData
 	var seasoning: SeasoningData
+	var condiment: CondimentData
+	var mixin: MixinData
+	var shell: ShellData
 	
 	enum CodingKeys: String, CodingKey {
 		case baseLayer = "base_layer"
 		case seasoning
+		case condiment
+		case mixin
+		case shell
 	}
 }
 
@@ -22,5 +28,17 @@ struct BaseLayerData: Decodable {
 }
 
 struct SeasoningData: Decodable {
+	var name: String
+}
+
+struct CondimentData: Decodable {
+	var name: String
+}
+
+struct MixinData: Decodable {
+	var name: String
+}
+
+struct ShellData: Decodable {
 	var name: String
 }

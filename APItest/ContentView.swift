@@ -10,7 +10,10 @@ import SwiftUI
 struct ContentView: View {
 	
 	@State var data = TacoData(baseLayer: BaseLayerData(name: "base"),
-	seasoning: SeasoningData(name: "seasoning name"))
+	seasoning: SeasoningData(name: "seasoning name"),
+	condiment: CondimentData(name: "test"),
+	mixin: MixinData(name: "test"),
+	shell: ShellData(name: "test"))
 	
 	func getData() {
 		let urlString = "http://taco-randomizer.herokuapp.com/random/"
@@ -34,12 +37,14 @@ struct ContentView: View {
 	}
 	
     var body: some View {
-		VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 5, content: {
-			Button("Refresh data") {getData()}
-			Text("\(data.baseLayer.name)").font(.title)
-			Text("\(data.seasoning.name)")
-			}
-		)
+		Text("\(data.baseLayer.name)").font(.headline)
+		VStack(alignment: .leading, spacing: 5, content: {
+			Text("Seasoning: \(data.seasoning.name)")
+			Text("Salad: \(data.mixin.name)")
+			Text("Sauce: \(data.condiment.name)")
+			Text("Shell: \(data.shell.name)")
+		})
+		Button("Refresh data") {getData()}
 	}
 }
 
